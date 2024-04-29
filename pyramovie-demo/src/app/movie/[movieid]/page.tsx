@@ -24,7 +24,7 @@ const Movie = async ({ params }: { params: { movieid: string } }) => {
 					<div className={`${style['movie__info']}`}>
 						<h2 className={style['movie__title']}>{currentMovie?.title}</h2>
 						<h3>{currentMovie?.original_title}</h3>
-
+						<p>release_date {currentMovie?.release_date}</p>
 						<p>{currentMovie?.overview}</p>
 					</div>
 

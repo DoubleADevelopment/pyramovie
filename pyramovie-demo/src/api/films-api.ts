@@ -1,8 +1,9 @@
 import type IcurrentMovie from '@/types/movie/current-movie';
+import { BackdropsResponse } from '@/types/movie/movie';
 import { PopularPerosns } from '@/types/movie/popular-people';
 import { ISearchMulti } from '@/types/movie/search';
 import type { ISimilarMovies } from '@/types/movie/similar';
-import { Person, PersonImages } from '@/types/person/person';
+import { Person, PersonImages, PersonMovieCredits } from '@/types/person/person';
 
 class FilmsApi {
 	private options;
@@ -56,6 +57,20 @@ class FilmsApi {
 	// https://api.themoviedb.org/3/person/{person_id}/images
 	async getPersonImages(personId: number): Promise<PersonImages> {
 		const requestpath = `https://api.themoviedb.org/3/person/${personId}/images?api_key=c42a612fa11183223ab9f9e7502f8363&language=ru`;
+		const res = await fetch(requestpath, this.options);
+		return res.json();
+	}
+
+	//https://api.themoviedb.org/3/person/{person_id}/movie_credits
+	async getPersonMovieCredits(personId: number): Promise<PersonMovieCredits> {
+		const requestpath = `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=c42a612fa11183223ab9f9e7502f8363&language=ru`;
+		const res = await fetch(requestpath, this.options);
+		return res.json();
+	}
+
+	//https://api.themoviedb.org/3/movie/{movie_id}/images
+	async getMovieImages(movieId: number): Promise<BackdropsResponse> {
+		const requestpath = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=c42a612fa11183223ab9f9e7502f8363&language=en`;
 		const res = await fetch(requestpath, this.options);
 		return res.json();
 	}
