@@ -35,6 +35,12 @@ class FilmsApi {
 		return res.json();
 	}
 
+	async getRecomendationFilms(lang: string, movieId: number): Promise<ISimilarMovies | null> {
+		const requestpath = `${process.env.BASE_URL}${movieId}/recommendations?api_key=${process.env.API_KEY}&language=ru-RU`;
+		const res = await fetch(requestpath, this.options);
+		return res.json();
+	}
+
 	async searchMulti(queryString: string, page = 1): Promise<ISearchMulti | null> {
 		const requestpath = `https://api.themoviedb.org/3/search/movie?query=${queryString}&api_key=c42a612fa11183223ab9f9e7502f8363&language=en-EN&page=${page}`;
 		const res = await fetch(requestpath, this.options);
