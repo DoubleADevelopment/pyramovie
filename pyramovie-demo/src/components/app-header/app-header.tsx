@@ -1,5 +1,4 @@
 /* components */
-// import { LoginBtn } from '../';
 import AppNav from './header-nav/header-nav';
 import HeaderSearchBar from './header-search-bar/header-search-bar';
 /* styles */

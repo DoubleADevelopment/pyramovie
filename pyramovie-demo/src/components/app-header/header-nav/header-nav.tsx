@@ -14,21 +14,31 @@ const AppNav = () => {
 				<li className={`${style['header-nav__item']}`}>
 					<Link
 						className={`${style['header-nav__link']} ${
+							pathName === '/pyra' ? style['header-nav__link--active'] : ''
+						}`}
+						href="/pyra"
+					>
+						pyra
+					</Link>
+				</li>
+				<li className={`${style['header-nav__item']}`}>
+					<Link
+						className={`${style['header-nav__link']} ${
 							pathName === '/' ? style['header-nav__link--active'] : ''
 						}`}
 						href="/"
 					>
-						Films
+						home
 					</Link>
 				</li>
 				<li className={`${style['header-nav__item']}`}>
 					<a className={`${style['header-nav__link']}`} href="#">
-						Serials
+						films
 					</a>
 				</li>
 				<li className={`${style['header-nav__item']}`}>
 					<a className={`${style['header-nav__link']}`} href="#">
-						new
+						Serials
 					</a>
 				</li>
 				<li className={`${style['header-nav__item']}`}>
