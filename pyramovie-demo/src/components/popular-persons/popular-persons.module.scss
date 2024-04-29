@@ -1,4 +1,5 @@
 .popular-films {
+  padding: 50px 0;
 	width: 100%;
 }
 
@@ -8,7 +9,7 @@
 	grid-template-rows: min-content max-content;
 	overflow-x: hidden;
 	max-width: 100%;
-	gap: 30px;
+	gap: 20px;
 }
 
 .popular-films__title {
@@ -34,22 +35,20 @@
 
 .popular-films__item {
 	position: relative;
-	width: 200px;
-	height: 300px;
-	background-color: var(--surface);
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+	width: 180px;
 }
 
 .popular-films__item-info {
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: 1;
-	padding: 20px;
-	width: 100%;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .popular-films__item-title {
+  text-align: center;
 	color: var(--main-text-color);
 }
 
@@ -58,8 +57,9 @@
 }
 
 .popular-films__item-poster {
-	width: 100%;
-	height: 100%;
+  border-radius: 100%;
+  width: 180px;
+  height: 180px;
 	object-fit: cover;
 }
 
