@@ -1,0 +1,35 @@
+.images-list-wrap {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.images-list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-x: auto;
+  width: 100%;
+  gap: 20px;
+}
+
+.image-list-image {
+  border-radius: 20px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.film-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 250px;
+  height: 100%;
+}
+
+.film-item-img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
