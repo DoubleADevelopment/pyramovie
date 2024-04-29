@@ -2,6 +2,7 @@ import type IcurrentMovie from '@/types/movie/current-movie';
 import { PopularPerosns } from '@/types/movie/popular-people';
 import { ISearchMulti } from '@/types/movie/search';
 import type { ISimilarMovies } from '@/types/movie/similar';
+import { Person, PersonImages } from '@/types/person/person';
 
 class FilmsApi {
 	private options;
@@ -42,6 +43,19 @@ class FilmsApi {
 	//https://api.themoviedb.org/3/person/popular?language=ru&page=1&api_key=c42a612fa11183223ab9f9e7502f8363
 	async popularPeople(page = 1): Promise<PopularPerosns> {
 		const requestpath = `https://api.themoviedb.org/3/person/popular?language=ru&page=${page}&api_key=c42a612fa11183223ab9f9e7502f8363`;
+		const res = await fetch(requestpath, this.options);
+		return res.json();
+	}
+	//  https://api.themoviedb.org/3/person/{person_id}
+	async getPerson(personId: number): Promise<Person> {
+		const requestpath = `https://api.themoviedb.org/3/person/${personId}?api_key=c42a612fa11183223ab9f9e7502f8363&language=ru`;
+		const res = await fetch(requestpath, this.options);
+		return res.json();
+	}
+
+	// https://api.themoviedb.org/3/person/{person_id}/images
+	async getPersonImages(personId: number): Promise<PersonImages> {
+		const requestpath = `https://api.themoviedb.org/3/person/${personId}/images?api_key=c42a612fa11183223ab9f9e7502f8363&language=ru`;
 		const res = await fetch(requestpath, this.options);
 		return res.json();
 	}
