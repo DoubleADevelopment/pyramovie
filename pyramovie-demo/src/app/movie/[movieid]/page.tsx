@@ -6,14 +6,17 @@ import style from './style.module.css';
 
 const Movie = async ({ params }: { params: { movieid: string } }) => {
 	const currentMovie = await filmsApi.getMovieWithId('eng', +params.movieid);
+	const movieImages = await filmsApi.getMovieImages(+params.movieid);
+
+	console.log(movieImages.backdrops[0]);
 
 	return (
 		<section className={style['movie']}>
 			<div className={`${style['movie__wrap']} container`}>
 				<div className={`${style['movie__banner']}`}>
-					<Image
+					<img
 						className={style['movie__poster-backdrop']}
-						src={`https://image.tmdb.org/t/p/original${currentMovie?.backdrop_path}`}
+						src={`https://image.tmdb.org/t/p/original${movieImages.backdrops[0]?.file_path}`}
 						width={500}
 						height={300}
 						alt=""
@@ -28,7 +31,7 @@ const Movie = async ({ params }: { params: { movieid: string } }) => {
 						<p>{currentMovie?.overview}</p>
 					</div>
 
-					<Image
+					<img
 						className={style['movie__poster']}
 						src={`https://image.tmdb.org/t/p/original${currentMovie?.poster_path}`}
 						width={300}
