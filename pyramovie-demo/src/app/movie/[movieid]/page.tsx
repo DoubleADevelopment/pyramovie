@@ -3,12 +3,11 @@ import Image from 'next/image';
 import filmsApi from '@/api/films-api';
 /* STYLES */
 import style from './style.module.css';
+import { MovieCollection } from '@/components';
 
 const Movie = async ({ params }: { params: { movieid: string } }) => {
 	const currentMovie = await filmsApi.getMovieWithId('eng', +params.movieid);
 	const movieImages = await filmsApi.getMovieImages(+params.movieid);
-
-	console.log(movieImages.backdrops[0]);
 
 	return (
 		<section className={style['movie']}>
@@ -16,7 +15,7 @@ const Movie = async ({ params }: { params: { movieid: string } }) => {
 				<div className={`${style['movie__banner']}`}>
 					<img
 						className={style['movie__poster-backdrop']}
-						src={`https://image.tmdb.org/t/p/original${movieImages.backdrops[0]?.file_path}`}
+						src={`https://image.tmdb.org/t/p/original${currentMovie?.backdrop_path}`}
 						width={500}
 						height={300}
 						alt=""
@@ -40,6 +39,10 @@ const Movie = async ({ params }: { params: { movieid: string } }) => {
 					/>
 				</div>
 			</div>
+
+			{currentMovie?.belongs_to_collection?.id && (
+				<MovieCollection collectionId={currentMovie.belongs_to_collection.id} />
+			)}
 		</section>
 	);
 };

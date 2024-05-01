@@ -1,5 +1,6 @@
 import type IcurrentMovie from '@/types/movie/current-movie';
 import { BackdropsResponse } from '@/types/movie/movie';
+import { MovieCollection } from '@/types/movie/movie-collection';
 import { PopularPerosns } from '@/types/movie/popular-people';
 import { ISearchMulti } from '@/types/movie/search';
 import type { ISimilarMovies } from '@/types/movie/similar';
@@ -31,6 +32,13 @@ class FilmsApi {
 
 	async getSimilarFilms(lang: string, movieId: number): Promise<ISimilarMovies | null> {
 		const requestpath = `${process.env.BASE_URL}${movieId}/similar?api_key=${process.env.API_KEY}&language=ru-RU`;
+		const res = await fetch(requestpath, this.options);
+		return res.json();
+	}
+
+	// https://api.themoviedb.org/3/collection/934765?api_key=c42a612fa11183223ab9f9e7502f8363
+	async getFilmCollection(collectionId: number): Promise<MovieCollection> {
+		const requestpath = `https://api.themoviedb.org/3/collection/${collectionId}?api_key=${process.env.API_KEY}&language=ru-RU`;
 		const res = await fetch(requestpath, this.options);
 		return res.json();
 	}
