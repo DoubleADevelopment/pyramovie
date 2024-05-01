@@ -5,8 +5,9 @@ import style from './page.module.scss';
 const Images = async ({ params }: { params: { movieid: string } }) => {
 	const movieImages = await filmsApi.getMovieImages(+params.movieid);
 	console.log(movieImages);
+
 	return (
-		<div className={style['images-list-wrap']}>
+		<div className={`${style['images-list-wrap']} container`}>
 			<ul className={style['images-list']}>
 				{movieImages.backdrops.map((img) => {
 					return (
@@ -15,7 +16,7 @@ const Images = async ({ params }: { params: { movieid: string } }) => {
 								className={style['film-item-img']}
 								width={150}
 								height={150}
-								src={`https://image.tmdb.org/t/p/original${img?.file_path}`}
+								src={`https://image.tmdb.org/t/p/original${img?.file_path && img?.file_path}`}
 								alt=""
 							/>
 						</li>
@@ -31,7 +32,7 @@ const Images = async ({ params }: { params: { movieid: string } }) => {
 								className={style['film-item-img']}
 								width={150}
 								height={150}
-								src={`https://image.tmdb.org/t/p/original${img?.file_path}`}
+								src={`https://image.tmdb.org/t/p/original${img?.file_path && img?.file_path}`}
 								alt=""
 							/>
 						</li>

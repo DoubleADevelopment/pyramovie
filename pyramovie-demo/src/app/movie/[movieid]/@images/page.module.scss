@@ -1,12 +1,14 @@
 .images-list-wrap {
   overflow: hidden;
-  max-width: 100%;
+
+  // max-width: 100%;max-widthmax-width
 }
 
 .images-list {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  list-style: none;
   overflow-x: auto;
   width: 100%;
   gap: 20px;
@@ -20,12 +22,7 @@
 }
 
 .film-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 250px;
-  height: 100%;
+  width: min-content;
 }
 
 .film-item-img {
