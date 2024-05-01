@@ -2,6 +2,7 @@ import type IcurrentMovie from '@/types/movie/current-movie';
 import { BackdropsResponse } from '@/types/movie/movie';
 import { MovieCollection } from '@/types/movie/movie-collection';
 import { MovieProviders } from '@/types/movie/movie-providers';
+import { VideoData } from '@/types/movie/movie-videos';
 import { PopularPerosns } from '@/types/movie/popular-people';
 import { ISearchMulti } from '@/types/movie/search';
 import type { ISimilarMovies } from '@/types/movie/similar';
@@ -40,6 +41,13 @@ class FilmsApi {
 	// https://api.themoviedb.org/3/collection/934765?api_key=c42a612fa11183223ab9f9e7502f8363
 	async getFilmCollection(collectionId: number): Promise<MovieCollection> {
 		const requestpath = `https://api.themoviedb.org/3/collection/${collectionId}?api_key=${process.env.API_KEY}&language=ru-RU`;
+		const res = await fetch(requestpath, this.options);
+		return res.json();
+	}
+
+	//https://api.themoviedb.org/3/movie/934632/videos?api_key=c42a612fa11183223ab9f9e7502f8363
+	async getFilmVideos(movieId: number): Promise<VideoData> {
+		const requestpath = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.API_KEY}`;
 		const res = await fetch(requestpath, this.options);
 		return res.json();
 	}

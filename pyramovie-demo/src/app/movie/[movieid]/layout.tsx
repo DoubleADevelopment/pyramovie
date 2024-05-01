@@ -21,10 +21,12 @@ export default function Layout(props: {
 	similar: React.ReactNode;
 	images: React.ReactNode;
 	recomendation: React.ReactNode;
+	videos: React.ReactNode;
 }) {
 	return (
 		<div className={style.layout}>
 			{props.children}
+			{props.videos}
 			{props.images}
 			{props.recomendation}
 			{props.similar}
